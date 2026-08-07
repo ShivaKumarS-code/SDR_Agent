@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel
-from crew import run_research
+from crew.research_crew import run_research
 from api.auth import get_current_user
 from db.models.user import User
 from db.models.research import Research
@@ -11,7 +11,7 @@ from uuid import UUID
 class ResearchRequest(BaseModel):
     company: str
 
-router = APIRouter(prefix='/generate')
+router = APIRouter(prefix='/research')
 
 @router.post("/")
 def generate(data: ResearchRequest, current_user: User = Depends(get_current_user),
