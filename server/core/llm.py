@@ -6,7 +6,7 @@ _crewai_cache.mark_cache_breakpoint = lambda msg: msg
 
 def get_llm():
     return LLM(
-        model="groq/llama-3.3-70b-versatile",
+        model="groq/openai/gpt-oss-20b",
         api_key=settings.GROQ_API_KEY,
         temperature=0.2,
     )
