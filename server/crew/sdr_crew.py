@@ -1,3 +1,5 @@
+import json
+
 from crewai import Crew, Process
 
 from agents.research_agent import research_agent
@@ -13,28 +15,23 @@ from tasks.email_task import create_email_task
 
 def run_sdr_pipeline(
     company: str,
-    company_context: str,
+    product_context: str,
 ):
     research_task = create_research_task(company)
 
     analysis_task = create_analysis_task()
 
     lead_scoring_task = create_lead_scoring_task(
-        product_context=company_context
+        product_context=product_context
     )
 
     email_task = create_email_task(
-        product_context=company_context
+        product_context=product_context
     )
 
-    # Only pass the information each stage actually needs.
-    analysis_task.context = [
-        research_task,
-    ]
+    analysis_task.context = [research_task]
 
-    lead_scoring_task.context = [
-        analysis_task,
-    ]
+    lead_scoring_task.context = [analysis_task]
 
     email_task.context = [
         analysis_task,
@@ -58,4 +55,13 @@ def run_sdr_pipeline(
         verbose=True,
     )
 
-    return crew.kickoff()
+    result = crew.kickoff()
+
+    email = json.loads(result.tasks_output[3].raw)
+
+    return {
+        "research": result.tasks_output[0].raw,
+        "analysis": result.tasks_output[1].raw,
+        "lead_score": result.tasks_output[2].pydantic,
+        "email": email,
+    }
