@@ -1,9 +1,9 @@
 from fastapi import FastAPI
 from db.database import create_db_and_tables
 from api.auth import router as auth_router
-from api.research import router as research_router
-from api.analysis import router as analysis_router
-from api.lead_score import router as lead_score_router
+from api.debug.research import router as research_router
+from api.debug.analysis import router as analysis_router
+from api.debug.lead_score import router as lead_score_router
 
 app = FastAPI(title="SDR Agent API")
 app.include_router(auth_router)
@@ -19,4 +19,3 @@ def read_root():
 @app.on_event("startup")
 def on_startup():
     create_db_and_tables()
-

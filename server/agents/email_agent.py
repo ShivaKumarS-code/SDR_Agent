@@ -22,7 +22,7 @@ email_agent = Agent(
     Every personalization detail must come from the information provided.
     """,
 
-    llm=get_llm(),
+    llm=get_llm("cerebras/gpt-oss-120b"),
 
     verbose=True,
 )

@@ -23,7 +23,7 @@ lead_scoring_agent = Agent(
     Never invent facts or assume information that is not provided.
     """,
 
-    llm=get_llm(),
+    llm=get_llm("cerebras/gpt-oss-120b"),
 
     verbose=True,
 )

@@ -17,7 +17,7 @@ research_agent = Agent(
     Focus on factual information instead of making assumptions.
     """,
    
-    llm=get_llm(),
+    llm=get_llm("cerebras/gpt-oss-120b"),
 
     max_iter = 4,
     

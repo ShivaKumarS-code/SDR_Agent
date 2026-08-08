@@ -4,22 +4,15 @@ from agents.lead_scoring_agent import lead_scoring_agent
 from agents.models.lead_score import LeadScoreOutput
 
 
-def create_lead_scoring_task(
-    research: str,
-    analysis: str,
-    product_context: str,
-):
+def create_lead_scoring_task(product_context: str):
     return Task(
         description=f"""
-Evaluate the following company as a potential sales lead.
+Evaluate the company as a potential sales lead.
 
-COMPANY RESEARCH:
-{research}
+The previous task contains the company's sales analysis.
 
-COMPANY ANALYSIS:
-{analysis}
+OUR PRODUCT / SERVICE:
 
-SALES CONTEXT:
 {product_context}
 
 Score the lead from 0 to 100 based on:
@@ -31,25 +24,17 @@ Score the lead from 0 to 100 based on:
 
 Instructions:
 
-- Use ONLY the provided research, analysis, and sales context.
+- Use ONLY the previous analysis and the provided product context.
 - Do not perform web searches.
 - Do not invent facts or unsupported information.
 - Do not assume buying intent without evidence.
-- Every reason must be directly supported by the provided information.
-- Do not infer financial capability, purchasing ability, or operational
-  limitations from company size or revenue alone.
-- Do not treat the absence of recent news or buying signals as proof
-  that the company is a poor lead.
-- If buying signals are unavailable, reflect that primarily in the
-  confidence level rather than automatically lowering the score.
-- Evaluate company fit specifically against the provided sales context.
-- If there is insufficient information to determine a factor, state that
-  rather than making an assumption.
-- Give higher scores only when the available evidence supports them.
-- Give lower scores when there is clear evidence that the company is
-  a poor fit for our offering.
-- Keep the score consistent with the evidence provided.
-- Explain the main factors behind the score using concise reasons.
+- Every reason must be supported by the provided analysis.
+- Do not infer financial capability or purchasing ability without evidence.
+- If buying signals are unavailable, reflect that primarily in confidence.
+- Evaluate company fit specifically against the provided product context.
+- If there is insufficient information, state that rather than guessing.
+- Keep the score consistent with the available evidence.
+- Give concise reasons supporting the score.
 """,
 
         expected_output="""
@@ -57,8 +42,7 @@ A structured lead evaluation containing:
 
 - Score from 0 to 100
 - Confidence: Low, Medium, or High
-- A list of concise reasons directly supported by the provided
-  research, analysis, or sales context
+- A list of concise reasons supporting the score
 """,
 
         output_pydantic=LeadScoreOutput,

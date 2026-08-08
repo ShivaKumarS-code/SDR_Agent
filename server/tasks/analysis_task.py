@@ -3,62 +3,67 @@ from crewai import Task
 from agents.analysis_agent import analysis_agent
 
 
-def create_analysis_task(research: str):
+def create_analysis_task():
     return Task(
-        description=f"""
-Analyze the following company research.
+        description="""
+Analyze the company research provided by the previous task.
 
-Research Report:
+Transform the raw research into concise, actionable sales intelligence
+for downstream lead scoring and outreach.
 
-{research}
-
-Using ONLY the information provided above, perform a business analysis.
-
-Instructions:
-- Do NOT perform any web searches.
-- Do NOT invent facts or make unsupported assumptions.
-- Base every conclusion on the research provided.
-- Avoid generic business or sales advice.
-- If there is insufficient information to determine something, explicitly state:
-  "Insufficient information to determine."
-
-Identify the following:
+Using ONLY the provided research, identify:
 
 - Company Summary
-- Potential Business Challenges
-- Potential Customer Pain Points
+- Business Challenges
+- Potential Pain Points
 - Business Opportunities
 - Ideal Decision Makers
 - Buying Signals
-- Recommended Outreach Angle
+- Personalization Facts
+- Best Outreach Angle
+
+Instructions:
+
+- Base every conclusion on information from the research.
+- Do not invent facts, problems, initiatives, priorities, or buying intent.
+- Do not assume a problem simply because it is common in the company's industry.
+- Clearly distinguish reasonable inferences from established facts.
+- If there is insufficient evidence, say so.
+- Preserve important factual details that may be useful for lead scoring
+  or email personalization.
+- Do not repeat the entire research report.
+- Prioritize concise, actionable sales intelligence.
 """,
 
-        expected_output="""
-Produce a concise, well-structured Markdown report with the following sections:
+expected_output="""
+A concise structured Markdown report.
 
 # Company Summary
-Provide a brief summary of the company.
+2-3 sentences.
 
 # Business Challenges
-List only challenges that can reasonably be inferred from the research.
+Up to 3 evidence-based points.
 
-# Potential Customer Pain Points
-Describe the problems the company's customers are likely trying to solve based on its products or services.
+# Pain Points
+Up to 3 evidence-based points.
 
-# Business Opportunities
-Identify opportunities supported by the research.
+# Opportunities
+Up to 3 evidence-based points.
 
 # Decision Makers
-List the roles that are most likely to influence purchasing decisions.
-If uncertain, state that there is insufficient information.
+Relevant roles only when supported by the research.
 
 # Buying Signals
-Highlight any indicators suggesting the company may be open to purchasing or expanding solutions.
-If none are evident, state that.
+Only explicitly supported signals.
 
-# Recommended Outreach Angle
-Suggest one personalized outreach angle based only on the research.
-Do not include a full email.
+# Personalization Facts
+3-5 useful facts for outreach.
+
+# Outreach Angle
+One specific, evidence-based angle.
+
+Do not repeat the research.
+Keep the entire response under 700 words.
 """,
 
         agent=analysis_agent,

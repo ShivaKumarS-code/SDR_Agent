@@ -14,6 +14,7 @@ class Settings:
     JWT_SECRET_KEY = os.getenv("JWT_SECRET_KEY")
     TAVILY_API_KEY = os.getenv("TAVILY_API_KEY")
     GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+    CEREBRAS_API_KEY = os.getenv("CEREBRAS_API_KEY")
     JWT_ALGORITHM = os.getenv("JWT_ALGORITHM")
     ACCESS_TOKEN_EXPIRE_MINUTES = int(
         os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES")

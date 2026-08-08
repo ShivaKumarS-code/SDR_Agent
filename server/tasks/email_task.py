@@ -3,58 +3,41 @@ from crewai import Task
 from agents.email_agent import email_agent
 
 
-def create_email_task(
-    research: str,
-    analysis: str,
-    score: int,
-    confidence: str,
-    reasons: list[str],
-    product_context: str,
-):
+def create_email_task(product_context: str):
     return Task(
         description=f"""
-Write a personalized B2B cold outreach email for the company
-described below.
+Write a personalized B2B cold outreach email for the company.
 
-COMPANY RESEARCH:
-{research}
+The previous tasks provide:
 
-COMPANY ANALYSIS:
-{analysis}
-
-LEAD SCORE:
-{score}/100
-
-LEAD CONFIDENCE:
-{confidence}
-
-LEAD SCORING REASONS:
-{reasons}
+1. Company sales analysis
+2. Lead score, confidence, and scoring reasons
 
 OUR PRODUCT / SERVICE:
+
 {product_context}
 
 Instructions:
 
-- Write a concise B2B cold outreach email.
-- Personalize the email using only facts from the provided research
-  and analysis.
+- Use the previous analysis as the primary source of prospect information.
+- Use the lead score and scoring reasons to understand the strongest
+  sales opportunity.
+- Personalize the email using only facts contained in the analysis.
 - Connect a relevant company situation or opportunity to our
   product/service.
 - Do not invent company facts, problems, initiatives, or buying intent.
 - Never speculate about the prospect's internal situation, priorities,
   team behavior, or intentions.
 - Do not use phrases such as "I imagine", "you may be looking",
-  "you might be struggling", "your team is likely", or
-  "you're probably".
+  "you might be struggling", "your team is likely", or "you're probably".
 - Do not claim that the prospect is actively looking for our solution
-  unless explicitly stated in the provided information.
+  unless explicitly stated in the analysis.
 - Do not mention the lead score or confidence.
 - Do not mention that AI was used.
 - Avoid generic compliments.
 - Avoid excessive flattery.
 - Keep the email concise and natural.
-- Use a professional but conversational B2B tone.
+- Use a professional conversational B2B tone.
 - Include one clear call to action.
 - Do not use fake statistics or unsupported claims.
 
@@ -62,7 +45,7 @@ Return ONLY the JSON object requested in the expected output.
 """,
 
         expected_output="""
-Return ONLY valid JSON.
+Return ONLY valid JSON:
 
 {
     "subject": "A concise personalized subject line",
