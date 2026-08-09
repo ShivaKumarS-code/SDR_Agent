@@ -1,8 +1,5 @@
 # SDR Agent — AI-Powered Sales Prospecting & Outreach Pipeline
 
-[![Stack](https://img.shields.io/badge/Stack-React%20%7C%20FastAPI%20%7C%20CrewAI-violet)](#technology-stack)
-[![License](https://img.shields.io/badge/License-MIT-blue)](#license)
-
 **SDR Agent** is an autonomous B2B sales intelligence platform that automates prospect research, strategic opportunity analysis, lead scoring, and personalized outreach generation using a multi-agent AI crew.
 
 ---
