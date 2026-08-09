@@ -25,13 +25,13 @@
 
 ### Frontend (`/client`)
 - **Core**: React 19, TypeScript, Vite
-- **Styling**: Tailwind CSS v4, Vanilla CSS Design System with Liquid Glassmorphism
+- **Styling**: Tailwind CSS v4
 - **Icons**: Lucide React
 - **Markdown**: `react-markdown`, `remark-gfm`
 
 ### Backend (`/server`)
 - **Framework**: FastAPI (Python)
-- **Database & ORM**: SQLModel (SQLAlchemy + Pydantic) / SQLite / PostgreSQL
+- **Database & ORM**: SQLModel (SQLAlchemy + Pydantic) / PostgreSQL
 - **Multi-Agent Orchestration**: CrewAI framework
 - **Search & Tools**: Tavily Web Search API
 - **Auth**: Passlib (Bcrypt password hashing), PyJWT (Bearer Tokens)
