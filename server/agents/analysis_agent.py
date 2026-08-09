@@ -21,7 +21,7 @@ analysis_agent = Agent(
     provided to you.
     """,
 
-    llm=get_llm("groq/llama-3.1-8b-instant"),
+    llm=get_llm("cerebras/gpt-oss-120b"),
 
     verbose=True,
 )

@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from db.database import create_db_and_tables
 from api.auth import router as auth_router
 from api.debug.research import router as research_router
@@ -7,6 +8,15 @@ from api.debug.lead_score import router as lead_score_router
 from api.generate import router as generate_router
 
 app = FastAPI(title="SDR Agent API")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 app.include_router(auth_router)
 app.include_router(research_router)
 app.include_router(analysis_router)
