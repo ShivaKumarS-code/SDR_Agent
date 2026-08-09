@@ -1,8 +1,5 @@
 # SDR Agent — AI-Powered Sales Prospecting & Outreach Pipeline
 
-[![Stack](https://img.shields.io/badge/Stack-React%20%7C%20FastAPI%20%7C%20CrewAI-violet)](#technology-stack)
-[![License](https://img.shields.io/badge/License-MIT-blue)](#license)
-
 **SDR Agent** is an autonomous B2B sales intelligence platform that automates prospect research, strategic opportunity analysis, lead scoring, and personalized outreach generation using a multi-agent AI crew.
 
 ---
@@ -28,13 +25,13 @@
 
 ### Frontend (`/client`)
 - **Core**: React 19, TypeScript, Vite
-- **Styling**: Tailwind CSS v4, Vanilla CSS Design System with Liquid Glassmorphism
+- **Styling**: Tailwind CSS v4
 - **Icons**: Lucide React
 - **Markdown**: `react-markdown`, `remark-gfm`
 
 ### Backend (`/server`)
 - **Framework**: FastAPI (Python)
-- **Database & ORM**: SQLModel (SQLAlchemy + Pydantic) / SQLite / PostgreSQL
+- **Database & ORM**: SQLModel (SQLAlchemy + Pydantic) / PostgreSQL
 - **Multi-Agent Orchestration**: CrewAI framework
 - **Search & Tools**: Tavily Web Search API
 - **Auth**: Passlib (Bcrypt password hashing), PyJWT (Bearer Tokens)
