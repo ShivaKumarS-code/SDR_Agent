@@ -56,14 +56,14 @@ export default function Auth({ onSuccess }: AuthProps) {
       <div className="w-full max-w-xl space-y-6 relative z-10 animate-fade-in">
         {/* Card Container */}
         <div
-          className="liquid-glass-strong rounded-3xl p-8 sm:p-10 space-y-7 border border-[#1c1c1c] shadow-2xl"
+          className="liquid-glass-strong rounded-3xl p-8 sm:p-10 space-y-7 border border-[#1c1c1c] shadow-2xl relative"
           style={{ backgroundColor: 'rgba(12, 12, 12, 0.75)' }}
         >
           {/* Header Text — Inside Card */}
           <div className="flex flex-col items-center text-center space-y-2 pb-2">
             <div className="flex items-center justify-center gap-3">
               <img
-                src="/futuristic.png"
+                src="/icon.png"
                 alt="SDR Agent Logo"
                 className="h-14 w-14 rounded-full object-cover shrink-0 shadow-xl border border-[#2a2a2a]"
               />
@@ -130,7 +130,7 @@ export default function Auth({ onSuccess }: AuthProps) {
                   <input
                     type="text"
                     required
-                    placeholder="Shiva Kumar"
+                    placeholder="John Doe"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     className="w-full bg-[#141414] border border-[#262626] rounded-xl pl-12 pr-4 py-3.5 text-sm sm:text-base text-white placeholder-[#555] focus:outline-none focus:border-violet-500 transition-colors"

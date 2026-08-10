@@ -1,9 +1,8 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect } from 'react'
 import {
   LayoutDashboard,
   Layers,
   History,
-  Settings,
   Menu,
   X,
   LogOut,
@@ -15,13 +14,12 @@ import HistoryPage from '@/pages/HistoryPage'
 import Auth from '@/pages/Auth'
 import { fetchMeApi, logoutApi, type User, type BackendGeneration } from '@/services/api'
 
-type Page = 'dashboard' | 'generations' | 'history' | 'settings'
+type Page = 'dashboard' | 'generations' | 'history'
 
 const navItems: { label: string; icon: typeof LayoutDashboard; page: Page }[] = [
   { label: 'Dashboard', icon: LayoutDashboard, page: 'dashboard' },
   { label: 'Generations', icon: Layers, page: 'generations' },
   { label: 'History', icon: History, page: 'history' },
-  { label: 'Settings', icon: Settings, page: 'settings' },
 ]
 
 export default function App() {
@@ -88,13 +86,6 @@ export default function App() {
             onSelectGeneration={handleSelectHistoryItem}
             onNavigateToNew={() => navigateTo('generations')}
           />
-        )
-      case 'settings':
-        return (
-          <div className="animate-fade-in space-y-2">
-            <h1 className="text-3xl font-extrabold tracking-tight text-white">Settings</h1>
-            <p className="text-sm text-[#888]">Account and API preferences coming soon.</p>
-          </div>
         )
       default:
         return <Dashboard onNavigate={navigateTo} />
@@ -191,14 +182,14 @@ export default function App() {
           }}
         >
           <div className="flex items-center gap-3 overflow-hidden">
-            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-500 text-black text-xs font-extrabold uppercase shrink-0">
+            <div className="flex h-9 w-9 items-center justify-center rounded-full bg-emerald-500 text-black text-sm font-extrabold uppercase shrink-0 shadow-sm">
               {avatarInitial}
             </div>
-            <div className="overflow-hidden">
-              <p className="text-xs font-bold text-white truncate">
+            <div className="overflow-hidden space-y-0.5">
+              <p className="text-sm font-extrabold text-white truncate leading-tight">
                 {user.name}
               </p>
-              <p className="text-[10px] text-[#666] truncate">
+              <p className="text-xs font-medium text-[#888] truncate leading-tight">
                 {user.email}
               </p>
             </div>
@@ -207,9 +198,9 @@ export default function App() {
           <button
             onClick={handleLogout}
             title="Log out"
-            className="p-1.5 rounded-lg text-[#666] hover:text-red-400 hover:bg-[#181818] cursor-pointer transition-colors shrink-0"
+            className="p-2 rounded-lg text-[#888] hover:text-red-400 hover:bg-[#181818] cursor-pointer transition-colors shrink-0"
           >
-            <LogOut className="h-4 w-4" />
+            <LogOut className="h-5 w-5" />
           </button>
         </div>
       </aside>
