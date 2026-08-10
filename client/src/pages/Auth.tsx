@@ -53,25 +53,26 @@ export default function Auth({ onSuccess }: AuthProps) {
       <div className="absolute bottom-10 right-10 w-[350px] h-[350px] bg-emerald-500/10 rounded-full blur-[120px] pointer-events-none" />
 
       {/* Main Glass Card */}
-      <div className="w-full max-w-xl space-y-6 relative z-10 animate-fade-in">
+      <div className="w-full max-w-md space-y-4 relative z-10 animate-fade-in">
         {/* Card Container */}
         <div
-          className="liquid-glass-strong rounded-3xl p-8 sm:p-10 space-y-7 border border-[#1c1c1c] shadow-2xl relative"
+          className="liquid-glass-strong rounded-2xl p-6 sm:p-7 space-y-5 border border-[#1c1c1c] shadow-2xl relative"
           style={{ backgroundColor: 'rgba(12, 12, 12, 0.75)' }}
         >
           {/* Header Text — Inside Card */}
-          <div className="flex flex-col items-center text-center space-y-2 pb-2">
-            <div className="flex items-center justify-center gap-3">
+          <div className="flex flex-col items-center text-center space-y-1.5 pb-1">
+            <div className="flex items-center justify-center gap-2.5">
               <img
                 src="/icon.png"
+                onError={(e) => { e.currentTarget.src = '/futuristic.png' }}
                 alt="SDR Agent Logo"
-                className="h-14 w-14 rounded-full object-cover shrink-0 shadow-xl border border-[#2a2a2a]"
+                className="h-10 w-10 rounded-full object-cover shrink-0 shadow-lg border border-[#2a2a2a]"
               />
-              <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
+              <h1 className="text-2xl font-extrabold tracking-tight text-white">
                 SDR Agent
               </h1>
             </div>
-            <p className="text-sm sm:text-base text-[#888] max-w-sm leading-relaxed">
+            <p className="text-xs text-[#888] max-w-xs leading-relaxed">
               {mode === 'login'
                 ? 'Sign in to access your prospect intelligence'
                 : 'Create your account to start generating leads'}
@@ -79,14 +80,14 @@ export default function Auth({ onSuccess }: AuthProps) {
           </div>
 
           {/* Mode Switch Tabs */}
-          <div className="flex rounded-xl p-1.5 bg-[#121212] border border-[#222]">
+          <div className="flex rounded-lg p-1 bg-[#121212] border border-[#222]">
             <button
               type="button"
               onClick={() => {
                 setMode('login')
                 setError(null)
               }}
-              className={`flex-1 py-2.5 text-xs sm:text-sm font-bold rounded-lg transition-all cursor-pointer ${
+              className={`flex-1 py-2 text-xs font-bold rounded-md transition-all cursor-pointer ${
                 mode === 'login'
                   ? 'bg-white text-black shadow-md'
                   : 'text-[#888] hover:text-white'
@@ -100,7 +101,7 @@ export default function Auth({ onSuccess }: AuthProps) {
                 setMode('register')
                 setError(null)
               }}
-              className={`flex-1 py-2.5 text-xs sm:text-sm font-bold rounded-lg transition-all cursor-pointer ${
+              className={`flex-1 py-2 text-xs font-bold rounded-md transition-all cursor-pointer ${
                 mode === 'register'
                   ? 'bg-white text-black shadow-md'
                   : 'text-[#888] hover:text-white'
@@ -112,63 +113,63 @@ export default function Auth({ onSuccess }: AuthProps) {
 
           {/* Error Banner */}
           {error && (
-            <div className="flex items-center gap-2.5 p-3.5 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-xs sm:text-sm animate-shake">
+            <div className="flex items-center gap-2 p-3 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400 text-xs animate-shake">
               <AlertCircle className="h-4 w-4 shrink-0 text-red-400" />
               <span>{error}</span>
             </div>
           )}
 
           {/* Form */}
-          <form onSubmit={handleSubmit} className="space-y-5">
+          <form onSubmit={handleSubmit} className="space-y-4">
             {mode === 'register' && (
-              <div className="space-y-2">
-                <label className="text-xs font-bold text-[#aaa] uppercase tracking-wider">
+              <div className="space-y-1.5">
+                <label className="text-[11px] font-bold text-[#aaa] uppercase tracking-wider">
                   Full Name
                 </label>
                 <div className="relative">
-                  <UserIcon className="absolute left-4 top-4 h-5 w-5 text-[#666]" />
+                  <UserIcon className="absolute left-3.5 top-3 h-4 w-4 text-[#666]" />
                   <input
                     type="text"
                     required
                     placeholder="John Doe"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="w-full bg-[#141414] border border-[#262626] rounded-xl pl-12 pr-4 py-3.5 text-sm sm:text-base text-white placeholder-[#555] focus:outline-none focus:border-violet-500 transition-colors"
+                    className="w-full bg-[#141414] border border-[#262626] rounded-lg pl-10 pr-3.5 py-2.5 text-xs sm:text-sm text-white placeholder-[#555] focus:outline-none focus:border-violet-500 transition-colors"
                   />
                 </div>
               </div>
             )}
 
-            <div className="space-y-2">
-              <label className="text-xs font-bold text-[#aaa] uppercase tracking-wider">
+            <div className="space-y-1.5">
+              <label className="text-[11px] font-bold text-[#aaa] uppercase tracking-wider">
                 Email Address
               </label>
               <div className="relative">
-                <Mail className="absolute left-4 top-4 h-5 w-5 text-[#666]" />
+                <Mail className="absolute left-3.5 top-3 h-4 w-4 text-[#666]" />
                 <input
                   type="email"
                   required
                   placeholder="you@company.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full bg-[#141414] border border-[#262626] rounded-xl pl-12 pr-4 py-3.5 text-sm sm:text-base text-white placeholder-[#555] focus:outline-none focus:border-violet-500 transition-colors"
+                  className="w-full bg-[#141414] border border-[#262626] rounded-lg pl-10 pr-3.5 py-2.5 text-xs sm:text-sm text-white placeholder-[#555] focus:outline-none focus:border-violet-500 transition-colors"
                 />
               </div>
             </div>
 
-            <div className="space-y-2">
-              <label className="text-xs font-bold text-[#aaa] uppercase tracking-wider">
+            <div className="space-y-1.5">
+              <label className="text-[11px] font-bold text-[#aaa] uppercase tracking-wider">
                 Password
               </label>
               <div className="relative">
-                <Lock className="absolute left-4 top-4 h-5 w-5 text-[#666]" />
+                <Lock className="absolute left-3.5 top-3 h-4 w-4 text-[#666]" />
                 <input
                   type="password"
                   required
                   placeholder="••••••••"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full bg-[#141414] border border-[#262626] rounded-xl pl-12 pr-4 py-3.5 text-sm sm:text-base text-white placeholder-[#555] focus:outline-none focus:border-violet-500 transition-colors"
+                  className="w-full bg-[#141414] border border-[#262626] rounded-lg pl-10 pr-3.5 py-2.5 text-xs sm:text-sm text-white placeholder-[#555] focus:outline-none focus:border-violet-500 transition-colors"
                 />
               </div>
             </div>
@@ -176,17 +177,17 @@ export default function Auth({ onSuccess }: AuthProps) {
             <button
               type="submit"
               disabled={loading}
-              className="w-full mt-3 inline-flex items-center justify-center gap-2.5 py-4 px-6 rounded-xl text-base font-extrabold bg-white text-black hover:bg-neutral-200 transition-all duration-200 cursor-pointer shadow-xl disabled:opacity-50 hover:scale-[1.01]"
+              className="w-full mt-2 py-2.5 px-4 rounded-lg text-xs sm:text-sm font-extrabold bg-white text-black hover:bg-neutral-200 focus:outline-none transition-all duration-200 cursor-pointer disabled:opacity-50 flex items-center justify-center gap-2 shadow-lg"
             >
               {loading ? (
                 <>
-                  <Loader2 className="h-5 w-5 text-violet-600 animate-spin-slow" />
-                  <span>Processing...</span>
+                  <Loader2 className="h-4 w-4 text-black animate-spin-slow" />
+                  <span>Please wait...</span>
                 </>
               ) : (
                 <>
                   <span>{mode === 'login' ? 'Sign In' : 'Create Account'}</span>
-                  <ArrowRight className="h-5 w-5 text-black" />
+                  <ArrowRight className="h-4 w-4 text-black" />
                 </>
               )}
             </button>
