@@ -1,5 +1,5 @@
-crewai<1.15.0
-crewai-tools<1.15.0
+crewai
+crewai-tools
 fastapi
 uvicorn
 python-dotenv
@@ -10,4 +10,4 @@ psycopg[binary]
 python-jose[cryptography]
 pwdlib[argon2]
 email-validator
-litellm<1.60.0
+litellm
