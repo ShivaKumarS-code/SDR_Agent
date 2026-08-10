@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Sparkles, Mail, Lock, User as UserIcon, ArrowRight, Loader2, AlertCircle } from 'lucide-react'
+import { Mail, Lock, User as UserIcon, ArrowRight, Loader2, AlertCircle } from 'lucide-react'
 import { loginApi, registerApi, type User } from '@/services/api'
 
 interface AuthProps {

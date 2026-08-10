@@ -27,7 +27,7 @@ export interface BackendGeneration {
   created_at: string
 }
 
-export async function loginApi(email: string, password: str): Promise<{ user: User; token: string }> {
+export async function loginApi(email: string, password: string): Promise<{ user: User; token: string }> {
   const response = await fetch(`${API_BASE}/auth/login`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -47,7 +47,7 @@ export async function loginApi(email: string, password: str): Promise<{ user: Us
   return { user, token }
 }
 
-export async function registerApi(name: string, email: string, password: str): Promise<{ user: User; token: string }> {
+export async function registerApi(name: string, email: string, password: string): Promise<{ user: User; token: string }> {
   const response = await fetch(`${API_BASE}/auth/register`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },

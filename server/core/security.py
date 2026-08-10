@@ -1,5 +1,5 @@
 from pwdlib import PasswordHash
-from datetime import datetime, timedelta, UTC
+from datetime import datetime, timedelta, timezone
 from jose import jwt, JWTError
 from core.config import settings
 from fastapi.security import OAuth2PasswordBearer
@@ -22,7 +22,7 @@ def verify_password(password: str, hashed_password: str) -> bool:
 def create_access_token(data: dict):
     to_encode = data.copy()
 
-    expire = datetime.now(UTC) + timedelta(
+    expire = datetime.now(timezone.utc) + timedelta(
         minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES
     )
 

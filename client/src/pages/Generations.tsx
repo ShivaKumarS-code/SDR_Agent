@@ -7,7 +7,6 @@ import {
 } from 'lucide-react'
 import { generatePipelineApi } from '@/services/api'
 import type {
-  StageStatus,
   PipelineStage,
   PageState,
   GenerationResult,

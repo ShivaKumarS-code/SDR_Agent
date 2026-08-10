@@ -1,4 +1,4 @@
-from datetime import datetime, UTC
+from datetime import datetime, timezone
 from uuid import UUID, uuid4
 
 from sqlmodel import SQLModel, Field
@@ -16,5 +16,5 @@ class User(SQLModel, table=True):
     hashed_password: str
 
     created_at: datetime = Field(
-        default_factory=lambda: datetime.now(UTC)
+        default_factory=lambda: datetime.now(timezone.utc)
     )

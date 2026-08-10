@@ -105,6 +105,9 @@ export default function StageContentPanel({
           </div>
         )
       case 'lead_scoring':
+        if (!result?.leadSummary) {
+          return <p className="text-sm text-[#555]">Lead scoring output will appear here.</p>
+        }
         return (
           <div className="space-y-4 animate-fade-in">
             <div className="flex items-center gap-2 mb-4">

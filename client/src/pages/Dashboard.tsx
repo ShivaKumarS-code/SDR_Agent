@@ -39,7 +39,7 @@ function getGreeting() {
   return 'Good evening'
 }
 
-export default function Dashboard({ onNavigate }: { onNavigate?: (page: 'dashboard' | 'generations' | 'settings') => void }) {
+export default function Dashboard({ onNavigate }: { onNavigate?: (page: 'dashboard' | 'generations' | 'history') => void }) {
   const [generations, setGenerations] = useState<BackendGeneration[]>([])
   const [loading, setLoading] = useState(true)
 
