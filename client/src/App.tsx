@@ -210,7 +210,7 @@ export default function App() {
         {/* Mobile menu toggle button */}
         <button
           type="button"
-          className="fixed top-4 left-4 z-40 p-2 rounded-lg text-[#888] bg-[#141414] border border-[#262626] hover:bg-[#181818] lg:hidden cursor-pointer transition-colors"
+          className="fixed top-4 right-4 z-40 p-2 rounded-lg text-[#888] bg-[#141414] border border-[#262626] hover:bg-[#181818] lg:hidden cursor-pointer transition-colors shadow-lg"
           onClick={() => setSidebarOpen(true)}
         >
           <Menu className="h-5 w-5" />

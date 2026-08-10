@@ -114,18 +114,18 @@ export default function StageContentPanel({
               <Target className="h-5 w-5 text-[#4ade80]" />
               <h3 className="text-lg font-bold text-white">Lead Scoring</h3>
             </div>
-            <div className="grid grid-cols-3 gap-3">
-              <div className="rounded-lg p-4" style={{ backgroundColor: '#111', border: '1px solid #1c1c1c' }}>
-                <p className="text-[11px] font-medium text-[#666] uppercase tracking-wider">Score</p>
-                <p className="text-2xl font-bold mt-1" style={{ color: getScoreColor(result.leadSummary.score) }}>{result.leadSummary.score}</p>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3">
+              <div className="rounded-lg p-3.5 sm:p-4 overflow-hidden" style={{ backgroundColor: '#111', border: '1px solid #1c1c1c' }}>
+                <p className="text-[10px] sm:text-[11px] font-medium text-[#666] uppercase tracking-wider">Score</p>
+                <p className="text-xl sm:text-2xl font-bold mt-1 truncate" style={{ color: getScoreColor(result.leadSummary.score) }}>{result.leadSummary.score}</p>
               </div>
-              <div className="rounded-lg p-4" style={{ backgroundColor: '#111', border: '1px solid #1c1c1c' }}>
-                <p className="text-[11px] font-medium text-[#666] uppercase tracking-wider">Priority</p>
-                <p className="text-2xl font-bold mt-1" style={{ color: getPriorityColor(result.leadSummary.priority) }}>{result.leadSummary.priority}</p>
+              <div className="rounded-lg p-3.5 sm:p-4 overflow-hidden" style={{ backgroundColor: '#111', border: '1px solid #1c1c1c' }}>
+                <p className="text-[10px] sm:text-[11px] font-medium text-[#666] uppercase tracking-wider">Priority</p>
+                <p className="text-xl sm:text-2xl font-bold mt-1 truncate" style={{ color: getPriorityColor(result.leadSummary.priority) }}>{result.leadSummary.priority}</p>
               </div>
-              <div className="rounded-lg p-4" style={{ backgroundColor: '#111', border: '1px solid #1c1c1c' }}>
-                <p className="text-[11px] font-medium text-[#666] uppercase tracking-wider">Confidence</p>
-                <p className="text-2xl font-bold text-white mt-1">{result.leadSummary.confidence}</p>
+              <div className="rounded-lg p-3.5 sm:p-4 overflow-hidden" style={{ backgroundColor: '#111', border: '1px solid #1c1c1c' }}>
+                <p className="text-[10px] sm:text-[11px] font-medium text-[#666] uppercase tracking-wider">Confidence</p>
+                <p className="text-xl sm:text-2xl font-bold text-white mt-1 truncate">{result.leadSummary.confidence}</p>
               </div>
             </div>
             <div>
